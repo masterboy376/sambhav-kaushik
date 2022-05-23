@@ -9,7 +9,7 @@ import { ContextProvider } from '../context/context'
 function MyApp({ Component, pageProps }) {
   return <>
     <ContextProvider>
-      <div className="overflow-y-hidden">
+      <div className="overflow-x-hidden transition-all duration-300 ease-in-out">
         <Component {...pageProps} />
       </div>
     </ContextProvider>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { Context } from '../context/context'
+import {Wave} from '../components/svgs'
 
 const Bg = (url) => {
 
@@ -7,7 +8,9 @@ const Bg = (url) => {
 
   return (
     <div>
-      <canvas class={`fixed z-0 w-full h-screen top-0 left-0 ${darkMode ? 'bg-gradient-to-r from-[#1a1807] to-gray-900 text-yellow-400' : 'bg-gradient-to-r from-purple-300 to-white text-purple-600'}`}></canvas>
+      <div className={`fixed top-0 left-0 w-full h-screen z-0 ${darkMode ? 'bg-gray-900 text-teal-500' : 'bg-white text-purple-600'}`}>
+      
+    </div>
     </div>
   )
 }

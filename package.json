@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "chart.js": "^3.7.1",
+    "framer-motion": "^6.3.3",
     "next": "12.1.5",
     "react": "18.1.0",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "18.1.0",
+    "react-hook-inview": "^4.5.0",
     "react-icons": "^4.3.1",
     "react-top-loading-bar": "^2.1.0",
     "typewriter-effect": "^2.18.2"
