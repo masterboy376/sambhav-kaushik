@@ -4,6 +4,7 @@ import '../styles/globals.css'
 import '../styles/darkscroll.css'
 import '../styles/custom.css'
 import { ContextProvider } from '../context/context'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function MyApp({ Component, pageProps }) {

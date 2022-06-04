@@ -1,64 +1,132 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Link from 'next/link'
 import { Context } from '../context/context'
 import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsGithub } from 'react-icons/bs'
 import { MdCall, MdAlternateEmail, MdLocationOn } from 'react-icons/md'
 import { motion } from 'framer-motion'
+import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Footer = () => {
-    const { darkMode } = useContext(Context)
+    const { darkMode, contactFormAnimation, contactFormRef, contactDetailAnimation, contactDetailRef, isSending, setIsSending, } = useContext(Context)
 
+    const [formDetails, setFormDetails] = useState({ name: '', email: '', message: '', 'g-recaptcha-response': '' })
 
+    const onChange = (e) => {
+        setFormDetails({ ...formDetails, [e.target.name]: e.target.value })
+    }
+
+    function onChangeRecaptcha(captchaValue) {
+        setFormDetails({ ...formDetails, ['g-recaptcha-response']: captchaValue })
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        setIsSending(true)
+        await emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, formDetails, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
+            .then(function (response) {
+                toast.success('Successfully sent the message.', {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    style: { 'backgroundColor': `${darkMode ? '#1f2937' : '#f1f5f9'}`, 'color': `${darkMode ? 'white' : '#111827'}` }
+                })
+            }, function (error) {
+                toast.error('Successfully sent the message.', {
+                    position: "bottom-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    style: { 'backgroundColor': `${darkMode ? '#1f2937' : '#f1f5f9'}`, 'color': `${darkMode ? 'white' : '#111827'}` }
+                })
+            });
+        setIsSending(false)
+        window.grecaptcha.reset();
+        setFormDetails({ name: '', email: '', message: '', 'g-recaptcha-response': '' })
+    }
 
     return (
-        <footer id='contact' className='max-w-7xl mx-auto'>
-            <h1 className="text-3xl sm:text-4xl text-center font-bold mb-4">Contact Me</h1>
+        <>
 
-            <p className="flex items-center justify-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-200'}`}> <MdLocationOn size={24} /> </button> Uttrakhand, India</p>
-            <p className="flex items-center justify-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-200'}`}> <MdCall size={24} /> </button>+91-6397511127</p>
-            <p className="flex items-center justify-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-200'}`}> <MdAlternateEmail size={24} /> </button> masterboy376@gamil.com</p>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <footer id='contact' className='max-w-7xl mx-auto pt-12 sm:pt-10'>
+                <h1 className="text-2xl sm:text-4xl text-center font-bold mb-2">Contact Me</h1>
 
-            <h2 className=" text-lg text-center my-2 font-medium title-font">Or</h2>
+                <div className={`relative sm:flex-row flex-col flex mx-auto justify-between items-center max-w-8xl w-full px-4 py-6`}>
 
-            <div className={`relative sm:flex-row flex-col flex mx-auto justify-between items-center max-w-8xl w-full px-4 py-6`}>
-
-                <div className={`flex px-8 sm:px-2 flex-col mx-auto sm:w-1/2 w-full pb-6 sm:pb-0`}>
-                    <div className="relative mb-4">
-                        <label htmlFor="name" className="leading-7 text-sm ">Name</label>
-                        <input type="text" placeholder='eg: Sambhav Kaushik' id="name" name="name" className={`transition-all duration-300 ease-in-out w-full border rounded-2xl text-base py-1 px-3 leading-8 outline-none focus:shadow-lg ${darkMode ? 'bg-gray-800 focus:border-teal-500 border-gray-800' : 'bg-slate-200 focus:border-purple-600 border-slate-200'}`} />
+                    <div ref={contactDetailRef} className="px-8 sm:px-2 w-full sm:w-1/2 self-start">
+                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdLocationOn size={24} /> </button> Uttrakhand, India</motion.p>
+                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdCall size={24} /> </button>+91-6397511127</motion.p>
+                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdAlternateEmail size={24} /> </button> sambhavkaushik376@gamil.com</motion.p>
                     </div>
-                    <div className="relative mb-4">
-                        <label htmlFor="email" className="leading-7 text-sm ">Email</label>
-                        <input type="email" placeholder='eg: abc@gamil.com' id="email" name="email" className={`transition-all duration-300 ease-in-out w-full border rounded-2xl text-base py-1 px-3 leading-8 outline-none focus:shadow-lg ${darkMode ? 'bg-gray-800 focus:border-teal-500 border-gray-800' : 'bg-slate-200 focus:border-purple-600 border-slate-200'}`} />
+
+                    <h2 className=" text-lg text-center my-2 font-medium title-font sm:hidden">Or</h2>
+
+                    <div ref={contactFormRef} className={`flex px-8 sm:px-2 flex-col mx-auto sm:w-1/2 w-full pb-6 sm:pb-0 mt-2`}>
+
+                        <form id='contactForm' onSubmit={onSubmit} className=''>
+
+                            <motion.h2 animate={contactFormAnimation} className=" text-lg mb-2 font-medium title-font">Message Form</motion.h2>
+
+                            <motion.div animate={contactFormAnimation} className="relative mb-4">
+                                <label htmlFor="name" className="leading-7 text-sm ">Name</label>
+                                <input onChange={onChange} type="text" placeholder='eg: Sambhav Kaushik' id="name" name="name" className={`transition-all duration-300 ease-in-out w-full border rounded-2xl text-base py-1 px-3 leading-8 outline-none focus:shadow-lg ${darkMode ? 'bg-gray-800 focus:border-teal-500 border-gray-800 text-white' : 'bg-slate-100 text-gray-900 focus:border-purple-600 border-slate-100'}`} />
+                            </motion.div>
+                            <motion.div animate={contactFormAnimation} className="relative mb-4">
+                                <label htmlFor="email" className="leading-7 text-sm ">Email</label>
+                                <input onChange={onChange} type="email" placeholder='eg: abc@gamil.com' id="email" name="email" className={`transition-all duration-300 ease-in-out w-full border rounded-2xl text-base py-1 px-3 leading-8 outline-none focus:shadow-lg ${darkMode ? 'bg-gray-800 focus:border-teal-500 border-gray-800 text-white' : 'bg-slate-100 text-gray-900 focus:border-purple-600 border-slate-100'}`} />
+                            </motion.div>
+                            <motion.div animate={contactFormAnimation} className="relative mb-4">
+                                <label htmlFor="message" className="leading-7 text-sm ">Message</label>
+                                <textarea onChange={onChange} id="message" placeholder='eg: Hi there ...' name="message" className={`transition-all duration-300 ease-in-out w-full border rounded-2xl text-base py-1 px-3 leading-8 outline-none focus:shadow-lg ${darkMode ? 'bg-gray-800 focus:border-teal-500 border-gray-800 text-white' : 'bg-slate-100 text-gray-900 focus:border-purple-600 border-slate-100'}`}></textarea>
+                            </motion.div>
+                            <motion.div animate={contactFormAnimation} className="relative w-full flex justify-center mb-4">
+                                <ReCAPTCHA
+                                    className={`${darkMode ? 'bg-gray-900' : 'bg-white'}`}
+                                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                                    onChange={onChangeRecaptcha}
+                                />
+                            </motion.div>
+                            <motion.button animate={contactFormAnimation} whileHover={{ scale: 1.05, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} type='submit' className={`w-full mx-auto transition-all duration-300 ease-in-out ${darkMode ? 'text-gray-900 hover:bg-teal-600 bg-teal-500' : 'text-white hover:bg-purple-700 bg-purple-600'} border-0 py-2 px-6 rounded-2xl text-2xl`}>{isSending?'Sending in progress...':'Send'}</motion.button>
+
+                        </form>
+
                     </div>
-                    <div className="relative mb-4">
-                        <label htmlFor="message" className="leading-7 text-sm ">Message</label>
-                        <textarea id="message" placeholder='eg: Hi there ...' name="message" className={`transition-all duration-300 ease-in-out w-full border rounded-2xl text-base py-1 px-3 leading-8 outline-none focus:shadow-lg ${darkMode ? 'bg-gray-800 focus:border-teal-500 border-gray-800' : 'bg-slate-200 focus:border-purple-600 border-slate-200'}`}></textarea>
-                    </div>
-                    <motion.button whileHover={{ scale: 1.05, transition: { duration: 0.3 }, }} whileTap={{ scale: 0.9 }} className={`w-2/3 mx-auto transition-all duration-300 ease-in-out ${darkMode ? 'text-gray-900 hover:bg-teal-600 bg-teal-500' : 'text-white hover:bg-purple-700 bg-purple-600'} border-0 py-2 px-6 rounded-2xl text-2xl`}>Send</motion.button>
 
                 </div>
 
-                <div className="px-8 sm:px-2 w-full sm:w-1/2">
-                    <div className='mx-auto w-full border rounded-2xl border-teal-500 h-64 sm:h-96 pb-6 sm:pb-0'></div>
+                <div className={`relative flex mx-auto justify-center items-center w-full px-8 py-4`}>
+
+                    <div className="flex items-center">
+                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out cursor-pointer`}><BsFacebook size={24} /></motion.p></Link>
+                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsInstagram size={24} /></motion.p></Link>
+                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsTwitter size={24} /></motion.p></Link>
+                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsLinkedin size={24} /></motion.p></Link>
+                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsGithub size={24} /></motion.p></Link>
+                    </div>
+
                 </div>
-
-            </div>
-
-
-            <div className={`relative flex mx-auto justify-center items-center w-full px-8 py-4`}>
-
-                <div className="flex items-center">
-                    <Link href={'/'}><p className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer`}><BsFacebook size={24} /></p></Link>
-                    <Link href={'/'}><p className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out hover:scale-110 ml-4 cursor-pointer`}><BsInstagram size={24} /></p></Link>
-                    <Link href={'/'}><p className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out hover:scale-110 ml-4 cursor-pointer`}><BsTwitter size={24} /></p></Link>
-                    <Link href={'/'}><p className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out hover:scale-110 ml-4 cursor-pointer`}><BsLinkedin size={24} /></p></Link>
-                    <Link href={'/'}><p className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out hover:scale-110 ml-4 cursor-pointer`}><BsGithub size={24} /></p></Link>
-                </div>
-
-            </div>
-            <p className="text-center font-bold pb-2">© 2022-till now | @SambhavKaushik</p>
-        </footer>
+                <p className="text-center font-bold pb-2">© 2022-till now | @SambhavKaushik</p>
+            </footer>
+        </>
     )
 }
 
