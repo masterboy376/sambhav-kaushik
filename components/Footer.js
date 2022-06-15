@@ -9,7 +9,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from 'react-toastify';
 
 const Footer = () => {
-    const { darkMode, contactFormAnimation, contactFormRef, contactDetailAnimation, contactDetailRef, isSending, setIsSending, } = useContext(Context)
+    const { darkMode, contactFormAnimation, contactFormRef, contactDetailAnimation, contactDetailRef, isSending, setIsSending, contactRef } = useContext(Context)
 
     const [formDetails, setFormDetails] = useState({ name: '', email: '', message: '', 'g-recaptcha-response': '' })
 
@@ -67,7 +67,7 @@ const Footer = () => {
                 draggable
                 pauseOnHover
             />
-            <footer id='contact' className='max-w-7xl mx-auto pt-12 sm:pt-10'>
+            <footer ref={contactRef} id='contact' className='max-w-7xl mx-auto pt-12 sm:pt-10'>
                 <h1 className="text-2xl sm:text-4xl text-center font-bold mb-2">Contact Me</h1>
 
                 <div className={`relative sm:flex-row flex-col flex mx-auto justify-between items-center max-w-8xl w-full px-4 py-6`}>

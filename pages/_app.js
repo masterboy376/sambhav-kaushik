@@ -1,8 +1,5 @@
-import 'chart.js/auto';
+import 'chart.js/auto'; //arc for chart js
 import '../styles/globals.css'
-// import '../styles/lightscroll.css'
-import '../styles/darkscroll.css'
-import '../styles/custom.css'
 import { ContextProvider } from '../context/context'
 import 'react-toastify/dist/ReactToastify.css';
 

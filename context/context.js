@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useAnimation } from 'framer-motion'
 import { useInView } from 'react-hook-inview'
-import {client} from '../lib/sanityClient'
 
 export const Context = React.createContext()
 
@@ -10,17 +9,26 @@ export const ContextProvider = ({ children }) => {
 
   const router = useRouter()
 
-  const [blogs, setBlogs] = useState([])
-
   const [darkMode, setDarkMode] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
   const [isSending, setIsSending] = useState(false)
+  const [blogs, setBlogs] = useState([])
+  const [active, setActive] = useState('home')
+
+  // sections ref
+  const [homeRef, homeInView] = useInView()
+  const [aboutRef, aboutInView] = useInView()
+  const [experienceRef, experienceInView] = useInView()
+  const [projectRef, projectInView] = useInView()
+  const [contactRef, contactInView] = useInView()
+  const [blogRef, blogInView] = useInView()
+
   const dataPie = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Java', 'JavaScript', 'Python', 'HTML/CSS', 'C++', 'Solidity'],
     datasets: [
       {
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [5, 30, 25, 15, 10, 15],
         backgroundColor: [
           'rgba(255, 99, 132, 0.5)',
           'rgba(54, 162, 235, 0.5)',
@@ -330,7 +338,7 @@ const aboutTextAnimation = useAnimation()
 const displayFixedAnimation = useAnimation()
     const [displayFixed, setDisplayFixed] = useState(false)
     useEffect(() => {
-        window.addEventListener("scroll", () => { window.scrollY > 150 ? setDisplayFixed(true) : setDisplayFixed(false) })
+        window.addEventListener("scroll", () => { window.scrollY > 70 ? setDisplayFixed(true) : setDisplayFixed(false) })
     }, [])
 
     useEffect(() => {
@@ -395,18 +403,39 @@ const displayFixedAnimation = useAnimation()
 
 // ------------------------------------------------------
 
-// useEffects 
+// useEffects
 useEffect(() => {
-  client.fetch('*[_type == "post"]{ title, slug, author, mainImage, categories, publishedAt, body}').then((bikes) => {
-    console.log(bikes)
-  })
-}, [])
+  if(homeInView){
+    setActive('home')
+  }
+  else if(aboutInView){
+    setActive('about')
+  }
+  else if(experienceInView){
+    setActive('experience')
+  }
+  else if(projectInView){
+    setActive('project')
+  }
+  else if(contactInView){
+    setActive('contact')
+  }
+  else if(blogInView){
+    setActive('blog')
+  }
+
+}, [homeInView, aboutInView, experienceInView, projectInView, contactInView, blogInView])
+
+
+// ------------------------------------------------------
+
+//function
 
 // ------------------------------------------------------
 
 
   return (
-    <Context.Provider value={{ router, darkMode, setDarkMode, menuOpen, setMenuOpen, isSending, setIsSending, aboutImgAnimation, aboutImgRef , aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, experienceWorkflowAnimation, experienceWorkflowRef, experienceBarAnimation, experienceBarRef, experienceBarSmAnimation, experienceBarSmRef, projectItemAnimation, projectItemRef, contactFormAnimation, contactFormRef, contactDetailAnimation, contactDetailRef, dataPie, navSm, displayFixed, navInit, displayFixedAnimation }}>
+    <Context.Provider value={{ router, darkMode, setDarkMode, menuOpen, setMenuOpen, isSending, setIsSending, aboutImgAnimation, aboutImgRef , aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, experienceWorkflowAnimation, experienceWorkflowRef, experienceBarAnimation, experienceBarRef, experienceBarSmAnimation, experienceBarSmRef, projectItemAnimation, projectItemRef, contactFormAnimation, contactFormRef, contactDetailAnimation, contactDetailRef, dataPie, navSm, displayFixed, navInit, displayFixedAnimation, homeRef, aboutRef, experienceRef, projectRef, blogRef, contactRef, active, blogs, setBlogs }}>
       {children}
     </Context.Provider>
   )
