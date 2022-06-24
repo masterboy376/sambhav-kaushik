@@ -12,9 +12,9 @@ import { Doughnut } from 'react-chartjs-2'
 import { Wave, Bitmoji } from '../components/Svgs'
 import { motion } from 'framer-motion'
 import { AiOutlineDownload } from 'react-icons/ai'
-import { GiBrain, GiNotebook } from 'react-icons/gi'
-import { FaAssistiveListeningSystems, FaLaptopCode, FaCheckCircle } from 'react-icons/fa'
 import Quicknav from '../components/Quicknav'
+import LineChart from '../components/LineChart'
+import Workflow from '../components/Workflow'
 
 const data = {
   name: 'Sambhav Kaushik',
@@ -22,6 +22,59 @@ const data = {
   aboutImg:"/photo2.jpg",
   about: ['I am a Software Developer located in India. I have always been interested in learning modern technologies and using them to create some awsome real world projects.', 'I am a well organised person, a problem solver, a good planner and a deep thinker. While working on a project, my primary goal is to create the best possible project at the lowest possible cost of development. For acomplishing this task I use multiple open source, and sometimes paid, tools. With this I have been able to to deliver the best user experience, at the same time, keeping the code base clean, readable and easily managable.'],
   experience: ["Since beginning my journey as a software developer nearly 2 years ago, I've done work on multiple, small, medium and large scale, projects, and collaborated with talented people to gain and exchange knowledge.", "I create successful multi-platform web and mobile apps that are fast, user friendly, and built with best practices. The main areas of my expertise is Full-stack development (front-end as well as back-end web development), Native mobile app development, UI/UX designing, Databases, Cloud computing, Blockchain, Logics and Algorithems, Cyber sequrity.", "I use multiple tools (like HTML/CSS, Javascript, Python, Java, C++, Solidity, TailwinCSS, Bootstrap, ReactJS, NextJS, NodeJS, Express, Flask, Django, MongoDB, Sanity, PostgreDB, Stapi, etc) for development to make the process easy to understand, quick and scalable. I also have some experience of working with some web builders (like Wordpress, Shopify and others)."],
+  pieChart: {
+    labels: ['Java', 'JavaScript', 'Python', 'HTML/CSS', 'C++', 'Solidity'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [5, 30, 25, 15, 10, 15],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(153, 102, 255, 0.5)',
+          'rgba(255, 159, 64, 0.5)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(153, 102, 255, 0.5)',
+          'rgba(255, 159, 64, 0.5)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  },
+  lineChart: [
+    {
+      title:'UX/UI designing | Web animation',
+      width:'w-10/12',
+      color:'bg-green-500',
+    },
+    {
+      title:'Full-stack web development | Logics and Algorithems',
+      width:'w-full',
+      color:'bg-red-500',
+    },
+    {
+      title:'App development',
+      width:'w-11/12',
+      color:'bg-cyan-500',
+    },
+    {
+      title:'Logo designing | 3D modelling | Video animation',
+      width:'w-8/12',
+      color:'bg-violet-500',
+    },
+    {
+      title:'Database | Blockchain | Cloud computing | Cyber sequrity',
+      width:'w-10/12',
+      color:'bg-orange-500',
+    },
+  ],
   projects: [
     {
       img: '/evergoods.png',
@@ -43,7 +96,7 @@ const data = {
 
 export default function Home() {
 
-  const { darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, experienceWorkflowAnimation, experienceWorkflowRef, experienceBarAnimation, experienceBarRef, experienceBarSmAnimation, experienceBarSmRef, projectItemRef, dataPie, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
+  const { darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, experienceWorkflowAnimation, experienceWorkflowRef, projectItemRef, dataPie, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
 
   return (
     <div>
@@ -165,7 +218,7 @@ export default function Home() {
                             <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={dataPie} />
                           </motion.div> : ''}
                           {index == 1 ? <div className={`w-full py-5 text-sm ${darkMode ? 'text-white' : 'text-black'} sm:hidden block`}>
-                            <div ref={experienceBarSmRef} className="flex flex-col w-full">
+                            {/* <div ref={experienceBarSmRef} className="flex flex-col w-full">
                               <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
                                 <p className="mb-2">UX/UI designing | Web animation</p>
                                 <div className="w-full bg-gray-700">
@@ -206,72 +259,18 @@ export default function Home() {
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
+                    <LineChart data={data.lineChart} isSm={true} />
+
                           </div> : ''}
                           <br />
                         </div>
                       })}
-                      {/* Since beginning my journey as a software developer nearly 2 years ago, I've done work on multiple, small, medium and large scale, projects, and collaborated with talented people to gain and exchange knowledge.
-                      <br />
-                      <motion.div ref={experiencePieSmRef} animate={experiencePieSmAnimation} className="w-full sm:hidden block py-5 max-w-sm sm:w-1/3 mx-auto">
-                        <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={dataPie} />
-                      </motion.div>
-                      <br />
-                      I create successful multi-platform web and mobile apps that are fast, user friendly, and built with best practices. The main areas of my expertise is Full-stack development (front-end as well as back-end web development), Native mobile app development, UI/UX designing, Databases, Cloud computing, Blockchain, Logics and Algorithems, Cyber sequrity.
-                      <br />
-                      <div className={`w-full py-5 text-sm ${darkMode ? 'text-white' : 'text-black'} sm:hidden block`}>
-                        <div ref={experienceBarSmRef} className="flex flex-col w-full">
-                          <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                            <p className="mb-2">UX/UI designing | Web animation</p>
-                            <div className="w-full bg-gray-700">
-                              <div className='w-10/12'>
-                                <motion.div animate={experienceBarSmAnimation} className={`w-full bg-green-500 h-0.5 transition-all duration-300`}></motion.div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                            <p className="mb-2">Full-stack web development | Logics and Algorithems</p>
-                            <div className="w-full bg-gray-700">
-                              <div className='w-full'>
-                                <motion.div animate={experienceBarSmAnimation} className={`w-full bg-red-500 h-0.5 transition-all duration-300`}></motion.div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                            <p className="mb-2">App development</p>
-                            <div className="w-full bg-gray-700">
-                              <div className='w-11/12'>
-                                <motion.div animate={experienceBarSmAnimation} className={`w-full bg-cyan-500 h-0.5 transition-all duration-300`}></motion.div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                            <p className="mb-2">Logo designing | 3D modelling | Video animation</p>
-                            <div className="w-full bg-gray-700">
-                              <div className='w-8/12'>
-                                <motion.div animate={experienceBarSmAnimation} className={`w-full bg-violet-500 h-0.5 transition-all duration-300`}></motion.div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                            <p className="mb-2">Database | Blockchain | Cloud computing | Cyber sequrity</p>
-                            <div className="w-full bg-gray-700">
-                              <div className='w-10/12'>
-                                <motion.div animate={experienceBarSmAnimation} className={`w-full bg-orange-500 h-0.5 transition-all duration-300`}></motion.div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <br />
-                      I use multiple tools (like HTML/CSS, Javascript, Python, Java, C++, Solidity, TailwinCSS, Bootstrap, ReactJS, NextJS, NodeJS, Express, Flask, Django, MongoDB, Sanity, PostgreDB, Stapi, etc) for development to make the process easy to understand, quick and scalable. I also have some experience of working with some web builders (like Wordpress, Shopify and others).
-                      <br />
-                      <br /> */}
                       Visit my <Link href={'/'}><a className={`hover:underline underline-offset-4 transition-all duration-300 ease-in-out cursor-pointer ${darkMode ? 'text-teal-500' : 'text-purple-600'}`}>LinkedIn</a></Link> or <Link href={'/'}><a className={`hover:underline underline-offset-4 transition-all duration-300 ease-in-out cursor-pointer ${darkMode ? 'text-teal-500' : 'text-purple-600'}`}>Github</a></Link> profile for more details or just <Link href={'#contact'}><a className={`hover:underline underline-offset-4 transition-all duration-300 ease-in-out cursor-pointer ${darkMode ? 'text-teal-500' : 'text-purple-600'}`}>contact</a></Link> me.</div></div>
                   </motion.div>
 
                   <div className={`w-full mt-4 ${darkMode ? 'text-white' : 'text-black'} sm:block hidden`}>
-                    <div ref={experienceBarRef} className="flex flex-col w-full">
+                    {/* <div ref={experienceBarRef} className="flex flex-col w-full">
                       <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
                         <p className="mb-2">UX/UI designing | Web animation</p>
                         <div className="w-full bg-gray-700">
@@ -312,19 +311,22 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
+                    <LineChart data={data.lineChart} isSm={false} />
                   </div>
 
                 </div>
 
                 <div className="flex flex-row sm:flex-col justify-start items-start px-10 py-5 w-full sm:w-1/3 ">
                   <motion.div ref={experiencePieRef} animate={experiencePieAnimation} className="w-full hidden sm:block">
-                    <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={dataPie} />
+                    <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={data.pieChart} />
                   </motion.div>
                 </div>
+
               </div>
 
-              <section ref={experienceWorkflowRef} className={`${darkMode ? 'text-white' : 'text-gray-900'} body-font`}>
+{/* workflow  */}
+              {/* <section ref={experienceWorkflowRef} className={`${darkMode ? 'text-white' : 'text-gray-900'} body-font`}>
                 <motion.div animate={experienceWorkflowAnimation} className="px-5 py-5 mx-auto flex flex-col items-start flex-wrap">
 
                   <p className={`text-lg mb-2 ${darkMode ? 'text-teal-500' : 'text-purple-600'} text-center font-medium w-full`}>My Workflow</p>
@@ -411,7 +413,8 @@ export default function Home() {
                   </div>
 
                 </motion.div>
-              </section>
+              </section> */}
+              <Workflow/>
 
             </div>
 
