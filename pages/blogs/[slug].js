@@ -13,8 +13,46 @@ import PortableText from "react-portable-text"
 const Post = ({ blog }) => {
   const { darkMode, blogRef, router } = useContext(Context)
 
+  const serializers = {
+    h1: (props) => <h1 style={{ fontWeight:"700", fontSize:"30px", padding:"5px 0px", lineHeight:"100%" }} {...props} />,
+    h2: (props) => <h2 style={{ fontWeight:"600", fontSize:"28px", padding:"5px 0px", lineHeight:"100%" }} {...props} />,
+    h3: (props) => <h3 style={{ fontWeight:"500", fontSize:"26px", padding:"5px 0px", lineHeight:"100%" }} {...props} />,
+    h4: (props) => <h4 style={{ fontWeight:"500", fontSize:"24px", padding:"5px 0px", lineHeight:"100%" }} {...props} />,
+    h5: (props) => <h5 style={{ fontWeight:"500", fontSize:"22px", padding:"5px 0px", lineHeight:"100%" }} {...props} />,
+    h6: (props) => <h6 style={{ fontWeight:"500", fontSize:"20px", padding:"5px 0px", lineHeight:"100%" }} {...props} />,
+    li: ({ children }) => <li className="special-list-item">{children}</li>,
+  }
+
   return (
-    <div className={`${darkMode ? 'dark-scroll' : 'light-scroll'}`}>
+    <>
+    <style jsx global>{`
+        ::-webkit-scrollbar {
+          width: 8px;
+          background-color: ${darkMode ? 'rgb(17 24 39)' : 'rgb(255 255 255)'};
+      }
+      ::-webkit-scrollbar-button {
+          display: none;
+          width: 0;
+          height: 0;
+      }
+      ::-webkit-scrollbar-corner {
+          background-color: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+          background-color: ${darkMode ? 'rgb(75 85 99)' : 'rgb(156 163 175)'};
+          border: 2px solid ${darkMode ? 'rgb(75 85 99)' : 'rgb(156 163 175)'};
+          border-radius: 10px;
+          padding:2px
+      }
+
+      .scroll-hidden::-webkit-scrollbar {
+        display:none
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      `}</style>
+    <div>
 
       <Head>
         <title>sambhav-kaushik | blogs</title>
@@ -82,10 +120,7 @@ const Post = ({ blog }) => {
               <div className={`sm:text-base text-sm mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <PortableText
                   content={blog.body}
-                  serializers={{
-                    h1: (props) => <h1 style={{ color: "red" }} {...props} />,
-                    li: ({ children }) => <li className="special-list-item">{children}</li>,
-                  }}
+                  serializers={serializers}
                 />
               </div>
               <hr className={`my-2 mx-auto opacity-70 border ${darkMode ? 'border-white' : 'border-gray-900'} w-64`} />
@@ -112,6 +147,7 @@ const Post = ({ blog }) => {
       </div>
 
     </div>
+    </>
   )
 }
 
@@ -133,7 +169,6 @@ export async function getStaticProps(context) {
   await client.fetch(`*[_type == "post" && slug.current=="${context.params.slug}"]{ title, slug, author->,'authorImg':author->image.asset->, 'mainImage':mainImage.asset->, categories[]->, body, metaData, _createdAt}`).then((rawBlog) => {
     blog = rawBlog
   })
-  console.log(blog[0])
   return {
     props: { blog: JSON.parse(JSON.stringify(blog))[0] },
   }

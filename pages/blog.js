@@ -72,6 +72,35 @@ const Blog = ({ data, totalBlogs }) => {
   }
 
   return (
+    <>
+    <style jsx global>{`
+        ::-webkit-scrollbar {
+          width: 8px;
+          background-color: ${darkMode ? 'rgb(17 24 39)' : 'rgb(255 255 255)'};
+      }
+      ::-webkit-scrollbar-button {
+          display: none;
+          width: 0;
+          height: 0;
+      }
+      ::-webkit-scrollbar-corner {
+          background-color: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+          background-color: ${darkMode ? 'rgb(75 85 99)' : 'rgb(156 163 175)'};
+          border: 2px solid ${darkMode ? 'rgb(75 85 99)' : 'rgb(156 163 175)'};
+          border-radius: 10px;
+          padding:2px
+      }
+
+      .scroll-hidden::-webkit-scrollbar {
+        display:none
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      `}</style>
+
     <div className={`${darkMode ? 'dark-scroll' : 'light-scroll'}`}>
 
       <Head>
@@ -153,6 +182,7 @@ const Blog = ({ data, totalBlogs }) => {
       </div>
 
     </div>
+    </>
   )
 }
 
