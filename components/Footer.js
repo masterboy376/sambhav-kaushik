@@ -8,7 +8,7 @@ import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from 'react-toastify';
 
-const Footer = () => {
+const Footer = ({data}) => {
     const { darkMode, contactFormAnimation, contactFormRef, contactDetailAnimation, contactDetailRef, isSending, setIsSending, contactRef } = useContext(Context)
 
     const [formDetails, setFormDetails] = useState({ name: '', email: '', message: '', 'g-recaptcha-response': '' })
@@ -73,9 +73,9 @@ const Footer = () => {
                 <div className={`relative sm:flex-row flex-col flex mx-auto justify-between items-center max-w-8xl w-full px-4 py-6`}>
 
                     <div ref={contactDetailRef} className="px-8 sm:px-2 w-full sm:w-1/2 self-start">
-                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdLocationOn size={24} /> </button> Uttrakhand, India</motion.p>
-                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdCall size={24} /> </button>+91-6397511127</motion.p>
-                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdAlternateEmail size={24} /> </button> sambhavkaushik376@gamil.com</motion.p>
+                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdLocationOn size={24} /> </button> {data.location}</motion.p>
+                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdCall size={24} /> </button> {data.contactNumber}</motion.p>
+                        <motion.p animate={contactDetailAnimation} className="flex items-center py-2"><button disabled={true} className={`rounded-full mr-2 shadow-lg p-2 ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}> <MdAlternateEmail size={24} /> </button> {data.emailAddress}</motion.p>
                     </div>
 
                     <h2 className=" text-lg text-center my-2 font-medium title-font sm:hidden">Or</h2>
@@ -116,11 +116,11 @@ const Footer = () => {
                 <div className={`relative flex mx-auto justify-center items-center w-full px-8 py-4`}>
 
                     <div className="flex items-center">
-                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out cursor-pointer`}><BsFacebook size={24} /></motion.p></Link>
-                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsInstagram size={24} /></motion.p></Link>
-                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsTwitter size={24} /></motion.p></Link>
-                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsLinkedin size={24} /></motion.p></Link>
-                        <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsGithub size={24} /></motion.p></Link>
+                        <Link href={data.facebook}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out cursor-pointer`}><BsFacebook size={24} /></motion.p></Link>
+                        <Link href={data.instagram}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsInstagram size={24} /></motion.p></Link>
+                        <Link href={data.twitter}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsTwitter size={24} /></motion.p></Link>
+                        <Link href={data.linkedin}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsLinkedin size={24} /></motion.p></Link>
+                        <Link href={data.github}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsGithub size={24} /></motion.p></Link>
                     </div>
 
                 </div>

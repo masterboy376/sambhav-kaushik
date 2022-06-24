@@ -4,7 +4,6 @@ import Head from 'next/head'
 import Bg from '../../components/Bg'
 import Navbar from '../../components/Navbar'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsGithub } from 'react-icons/bs'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { client } from '../../lib/sanityClient'
@@ -114,7 +113,7 @@ const Post = ({ blog }) => {
               })}</p>
               {/* main image */}
               <div className="w-full mb-4 p-2">
-                <img src={blog.mainImage.url} alt="" className='w-full max-w-4xl h-96 mx-auto rounded' />
+                <img src={blog.mainImage.url} alt="" className=' h-96 mx-auto rounded' />
               </div>
               {/* content */}
               <div className={`sm:text-base text-sm mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -131,17 +130,6 @@ const Post = ({ blog }) => {
         </div>
 
         {/* footer */}
-        <div className={`relative flex mx-auto justify-center items-center w-full px-8 py-4`}>
-
-          <div className="flex items-center">
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out cursor-pointer`}><BsFacebook size={24} /></motion.p></Link>
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsInstagram size={24} /></motion.p></Link>
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsTwitter size={24} /></motion.p></Link>
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsLinkedin size={24} /></motion.p></Link>
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsGithub size={24} /></motion.p></Link>
-          </div>
-
-        </div>
         <p className="text-center font-bold pb-2">© 2022-till now | @SambhavKaushik</p>
 
       </div>

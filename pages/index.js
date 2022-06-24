@@ -19,7 +19,7 @@ import Workflow from '../components/Workflow'
 const data = {
   name: 'Sambhav Kaushik',
   coverSkills: ['a Full-stack Web developer', 'a UI/UX designer', 'an App developer', 'a Data manager', 'a Logo designer', 'a 3-D modeler', 'an Animator', 'a Programmer'],
-  aboutImg:"/photo2.jpg",
+  aboutImg: "/photo2.jpg",
   about: ['I am a Software Developer located in India. I have always been interested in learning modern technologies and using them to create some awsome real world projects.', 'I am a well organised person, a problem solver, a good planner and a deep thinker. While working on a project, my primary goal is to create the best possible project at the lowest possible cost of development. For acomplishing this task I use multiple open source, and sometimes paid, tools. With this I have been able to to deliver the best user experience, at the same time, keeping the code base clean, readable and easily managable.'],
   experience: ["Since beginning my journey as a software developer nearly 2 years ago, I've done work on multiple, small, medium and large scale, projects, and collaborated with talented people to gain and exchange knowledge.", "I create successful multi-platform web and mobile apps that are fast, user friendly, and built with best practices. The main areas of my expertise is Full-stack development (front-end as well as back-end web development), Native mobile app development, UI/UX designing, Databases, Cloud computing, Blockchain, Logics and Algorithems, Cyber sequrity.", "I use multiple tools (like HTML/CSS, Javascript, Python, Java, C++, Solidity, TailwinCSS, Bootstrap, ReactJS, NextJS, NodeJS, Express, Flask, Django, MongoDB, Sanity, PostgreDB, Stapi, etc) for development to make the process easy to understand, quick and scalable. I also have some experience of working with some web builders (like Wordpress, Shopify and others)."],
   pieChart: {
@@ -50,29 +50,29 @@ const data = {
   },
   lineChart: [
     {
-      title:'UX/UI designing | Web animation',
-      width:'w-10/12',
-      color:'bg-green-500',
+      title: 'UX/UI designing | Web animation',
+      width: 'w-10/12',
+      color: 'bg-green-500',
     },
     {
-      title:'Full-stack web development | Logics and Algorithems',
-      width:'w-full',
-      color:'bg-red-500',
+      title: 'Full-stack web development | Logics and Algorithems',
+      width: 'w-full',
+      color: 'bg-red-500',
     },
     {
-      title:'App development',
-      width:'w-11/12',
-      color:'bg-cyan-500',
+      title: 'App development',
+      width: 'w-11/12',
+      color: 'bg-cyan-500',
     },
     {
-      title:'Logo designing | 3D modelling | Video animation',
-      width:'w-8/12',
-      color:'bg-violet-500',
+      title: 'Logo designing | 3D modelling | Video animation',
+      width: 'w-8/12',
+      color: 'bg-violet-500',
     },
     {
-      title:'Database | Blockchain | Cloud computing | Cyber sequrity',
-      width:'w-10/12',
-      color:'bg-orange-500',
+      title: 'Database | Blockchain | Cloud computing | Cyber sequrity',
+      width: 'w-10/12',
+      color: 'bg-orange-500',
     },
   ],
   projects: [
@@ -91,12 +91,20 @@ const data = {
       body: 'A simple website to display your nft artworks.',
       url: 'https://nft-lister.vercel.app/'
     }
-  ]
+  ],
+  facebook :'/',
+  instagram :'/',
+  twitter :'/',
+  linkedin :'/',
+  github :'/',
+  location: 'Uttarakhand, India',
+  contactNumber: '+91 6397511127',
+  eamilAddress: 'sambhavkaushik376@gmail.com',
 }
 
 export default function Home() {
 
-  const { darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, experienceWorkflowAnimation, experienceWorkflowRef, projectItemRef, dataPie, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
+  const { darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, projectItemRef, dataPie, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
 
   return (
     <div>
@@ -143,7 +151,7 @@ export default function Home() {
       <Wave />
 
       {/* quiknav */}
-      <Quicknav />
+      <Quicknav data={{facebook :'/', instagram :'/', twitter :'/', linkedin :'/', github :'/'}}/>
 
       {/* app  */}
       <div className={`relative z-10 min-h-screen w-full transition-all duration-300 ease-in-out ${darkMode ? 'text-teal-500' : 'text-purple-600'}`}>
@@ -218,50 +226,7 @@ export default function Home() {
                             <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={dataPie} />
                           </motion.div> : ''}
                           {index == 1 ? <div className={`w-full py-5 text-sm ${darkMode ? 'text-white' : 'text-black'} sm:hidden block`}>
-                            {/* <div ref={experienceBarSmRef} className="flex flex-col w-full">
-                              <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                                <p className="mb-2">UX/UI designing | Web animation</p>
-                                <div className="w-full bg-gray-700">
-                                  <div className='w-10/12'>
-                                    <motion.div animate={experienceBarSmAnimation} className={`w-full bg-green-500 h-0.5 transition-all duration-300`}></motion.div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                                <p className="mb-2">Full-stack web development | Logics and Algorithems</p>
-                                <div className="w-full bg-gray-700">
-                                  <div className='w-full'>
-                                    <motion.div animate={experienceBarSmAnimation} className={`w-full bg-red-500 h-0.5 transition-all duration-300`}></motion.div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                                <p className="mb-2">App development</p>
-                                <div className="w-full bg-gray-700">
-                                  <div className='w-11/12'>
-                                    <motion.div animate={experienceBarSmAnimation} className={`w-full bg-cyan-500 h-0.5 transition-all duration-300`}></motion.div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                                <p className="mb-2">Logo designing | 3D modelling | Video animation</p>
-                                <div className="w-full bg-gray-700">
-                                  <div className='w-8/12'>
-                                    <motion.div animate={experienceBarSmAnimation} className={`w-full bg-violet-500 h-0.5 transition-all duration-300`}></motion.div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                                <p className="mb-2">Database | Blockchain | Cloud computing | Cyber sequrity</p>
-                                <div className="w-full bg-gray-700">
-                                  <div className='w-10/12'>
-                                    <motion.div animate={experienceBarSmAnimation} className={`w-full bg-orange-500 h-0.5 transition-all duration-300`}></motion.div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div> */}
-                    <LineChart data={data.lineChart} isSm={true} />
-
+                            <LineChart data={data.lineChart} isSm={true} />
                           </div> : ''}
                           <br />
                         </div>
@@ -270,48 +235,6 @@ export default function Home() {
                   </motion.div>
 
                   <div className={`w-full mt-4 ${darkMode ? 'text-white' : 'text-black'} sm:block hidden`}>
-                    {/* <div ref={experienceBarRef} className="flex flex-col w-full">
-                      <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                        <p className="mb-2">UX/UI designing | Web animation</p>
-                        <div className="w-full bg-gray-700">
-                          <div className='w-10/12'>
-                            <motion.div animate={experienceBarAnimation} className={`w-full bg-green-500 h-0.5 transition-all duration-300`}></motion.div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                        <p className="mb-2">Full-stack web development | Logics and Algorithems</p>
-                        <div className="w-full bg-gray-700">
-                          <div className='w-full'>
-                            <motion.div animate={experienceBarAnimation} className={`w-full bg-red-500 h-0.5 transition-all duration-300`}></motion.div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                        <p className="mb-2">App development</p>
-                        <div className="w-full bg-gray-700">
-                          <div className='w-11/12'>
-                            <motion.div animate={experienceBarAnimation} className={`w-full bg-cyan-500 h-0.5 transition-all duration-300`}></motion.div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                        <p className="mb-2">Logo designing | 3D modelling | Video animation</p>
-                        <div className="w-full bg-gray-700">
-                          <div className='w-8/12'>
-                            <motion.div animate={experienceBarAnimation} className={`w-full bg-violet-500 h-0.5 transition-all duration-300`}></motion.div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={`w-full flex flex-col py-1 my-1  rounded-3xl hover:scale-x-105 transition-all duration-300 ease-out`}>
-                        <p className="mb-2">Database | Blockchain | Cloud computing | Cyber sequrity</p>
-                        <div className="w-full bg-gray-700">
-                          <div className='w-10/12'>
-                            <motion.div animate={experienceBarAnimation} className={`w-full bg-orange-500 h-0.5 transition-all duration-300`}></motion.div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
                     <LineChart data={data.lineChart} isSm={false} />
                   </div>
 
@@ -325,96 +248,8 @@ export default function Home() {
 
               </div>
 
-{/* workflow  */}
-              {/* <section ref={experienceWorkflowRef} className={`${darkMode ? 'text-white' : 'text-gray-900'} body-font`}>
-                <motion.div animate={experienceWorkflowAnimation} className="px-5 py-5 mx-auto flex flex-col items-start flex-wrap">
-
-                  <p className={`text-lg mb-2 ${darkMode ? 'text-teal-500' : 'text-purple-600'} text-center font-medium w-full`}>My Workflow</p>
-
-
-                  <div className="flex relative py-5 w-full sm:items-center sm:w-1/2 mx-auto">
-                    <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                      <div className={`h-full w-1 ${darkMode ? 'bg-teal-500' : 'bg-purple-600'} pointer-events-none`}></div>
-                    </div>
-                    <div className={`flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center ${darkMode ? 'text-white bg-teal-500' : 'text-white bg-purple-600'} relative z-10 title-font font-medium text-sm`}>1</div>
-                    <div className="flex-grow sm:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                      <div className={`flex-shrink-0 w-16 h-16 shadow-lg ${darkMode ? 'bg-gray-800 text-teal-500' : 'bg-slate-100  text-purple-600'} rounded-full inline-flex items-center justify-center`}>
-                        <FaAssistiveListeningSystems size={32} />
-                      </div>
-                      <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                        <h2 className={`font-medium title-font mb-1 text-xl`}>Understand</h2>
-                        <p className="leading-relaxed">My workflow starts with listening and understanding the problem carefully.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex relative py-5 w-full sm:items-center sm:w-1/2 mx-auto">
-                    <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                      <div className={`h-full w-1 ${darkMode ? 'bg-teal-500' : 'bg-purple-600'} pointer-events-none`}></div>
-                    </div>
-                    <div className={`flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center ${darkMode ? 'text-white bg-teal-500' : 'text-white bg-purple-600'} relative z-10 title-font font-medium text-sm`}>2</div>
-                    <div className="flex-grow sm:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                      <div className={`flex-shrink-0 w-16 h-16 shadow-lg ${darkMode ? 'bg-gray-800 text-teal-500' : 'bg-slate-100  text-purple-600'} rounded-full inline-flex items-center justify-center`}>
-                        <GiBrain size={32} />
-                      </div>
-                      <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                        <h2 className={`font-medium title-font mb-1 text-xl`}>Figure out</h2>
-                        <p className="leading-relaxed">I figure out all the possible solution and plausible difficulties ahead.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex relative py-5 w-full sm:items-center sm:w-1/2 mx-auto">
-                    <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                      <div className={`h-full w-1 ${darkMode ? 'bg-teal-500' : 'bg-purple-600'} pointer-events-none`}></div>
-                    </div>
-                    <div className={`flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center ${darkMode ? 'text-white bg-teal-500' : 'text-white bg-purple-600'} relative z-10 title-font font-medium text-sm`}>3</div>
-                    <div className="flex-grow sm:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                      <div className={`flex-shrink-0 w-16 h-16 shadow-lg ${darkMode ? 'bg-gray-800 text-teal-500' : 'bg-slate-100  text-purple-600'} rounded-full inline-flex items-center justify-center`}>
-                        <GiNotebook size={32} />
-                      </div>
-                      <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                        <h2 className={`font-medium title-font mb-1 text-xl`}>Action Plan</h2>
-                        <p className="leading-relaxed">Then I make a plan and choose the tools to solve a problem.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex relative py-5 w-full sm:items-center sm:w-1/2 mx-auto">
-                    <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                      <div className={`h-full w-1 ${darkMode ? 'bg-teal-500' : 'bg-purple-600'} pointer-events-none`}></div>
-                    </div>
-                    <div className={`flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center ${darkMode ? 'text-white bg-teal-500' : 'text-white bg-purple-600'} relative z-10 title-font font-medium text-sm`}>4</div>
-                    <div className="flex-grow sm:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                      <div className={`flex-shrink-0 w-16 h-16 shadow-lg ${darkMode ? 'bg-gray-800 text-teal-500' : 'bg-slate-100  text-purple-600'} rounded-full inline-flex items-center justify-center`}>
-                        <FaLaptopCode size={32} />
-                      </div>
-                      <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                        <h2 className={`font-medium title-font mb-1 text-xl`}>Execution</h2>
-                        <p className="leading-relaxed">Afterwards, I execute the plan efficiently.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex relative py-5 w-full sm:items-center sm:w-1/2 mx-auto">
-                    <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                      <div className={`h-full w-1 ${darkMode ? 'bg-teal-500' : 'bg-purple-600'} pointer-events-none`}></div>
-                    </div>
-                    <div className={`flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center ${darkMode ? 'text-white bg-teal-500' : 'text-white bg-purple-600'} relative z-10 title-font font-medium text-sm`}>5</div>
-                    <div className="flex-grow sm:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                      <div className={`flex-shrink-0 w-16 h-16 shadow-lg ${darkMode ? 'bg-gray-800 text-teal-500' : 'bg-slate-100  text-purple-600'} rounded-full inline-flex items-center justify-center`}>
-                        <FaCheckCircle size={32} />
-                      </div>
-                      <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                        <h2 className={`font-medium title-font mb-1 text-xl`}>Completion</h2>
-                        <p className="leading-relaxed">Finally, I test the product and deliver it.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                </motion.div>
-              </section> */}
-              <Workflow/>
+              {/* workflow  */}
+              <Workflow />
 
             </div>
 
@@ -441,7 +276,7 @@ export default function Home() {
           </main>
         </div>
 
-        <Footer />
+        <Footer data={{facebook :'/', instagram :'/', twitter :'/', linkedin :'/', github :'/', location: 'Uttarakhand, India', contactNumber: '+91-6397511127', emailAddress: 'sambhavkaushik376@gmail.com'}} />
 
       </div>
 

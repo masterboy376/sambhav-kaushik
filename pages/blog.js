@@ -166,17 +166,6 @@ const Blog = ({ data, totalBlogs }) => {
         </div>
 
         {/* footer */}
-        <div className={`relative flex mx-auto justify-center items-center w-full px-8 py-4`}>
-
-          <div className="flex items-center">
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out cursor-pointer`}><BsFacebook size={24} /></motion.p></Link>
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsInstagram size={24} /></motion.p></Link>
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsTwitter size={24} /></motion.p></Link>
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsLinkedin size={24} /></motion.p></Link>
-            <Link href={'/'}><motion.p whileHover={{ scale: 1.2, transition: { duration: 0.1 }, }} whileTap={{ scale: 0.9 }} className={`${darkMode ? 'text-gray-400 hover:text-teal-500' : 'text-gray-700 hover:text-purple-600'} transition-all duration-300 ease-in-out ml-4 cursor-pointer`}><BsGithub size={24} /></motion.p></Link>
-          </div>
-
-        </div>
         <p className="text-center font-bold pb-2">© 2022-till now | @SambhavKaushik</p>
 
       </div>

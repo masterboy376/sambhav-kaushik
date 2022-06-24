@@ -5,7 +5,7 @@ import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsGithub } from 'react-
 import { motion } from 'framer-motion'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 
-const Quicknav = () => {
+const Quicknav = ({data}) => {
 
     const { darkMode } = useContext(Context)
 
@@ -14,11 +14,11 @@ const Quicknav = () => {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 0.5 } }}>
 
             <div className="flex-col justify-center fixed top-32 left-2 z-20 flex">
-                <Link href={'/'}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsFacebook size={20} /></p></Link>
-                <Link href={'/'}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsInstagram size={20} /></p></Link>
-                <Link href={'/'}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsTwitter size={20} /></p></Link>
-                <Link href={'/'}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsLinkedin size={20} /></p></Link>
-                <Link href={'/'}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsGithub size={20} /></p></Link>
+                <Link href={data.facebook}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsFacebook size={20} /></p></Link>
+                <Link href={data.instagram}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsInstagram size={20} /></p></Link>
+                <Link href={data.twitter}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsTwitter size={20} /></p></Link>
+                <Link href={data.linkedin}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsLinkedin size={20} /></p></Link>
+                <Link href={data.github}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsGithub size={20} /></p></Link>
             </div>
 
             <div className={`flex absolute top-96 -right-60 sm:-right-64 -rotate-90 z-40`}>
