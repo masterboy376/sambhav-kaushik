@@ -5,9 +5,6 @@ import Bg from '../components/Bg'
 import Navbar from '../components/Navbar'
 import BlogCard from '../components/BlogCard'
 import { client } from '../lib/sanityClient'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsGithub } from 'react-icons/bs'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -47,12 +44,16 @@ const Blog = ({ data, totalBlogs }) => {
     }
   }, [searchValue])
 
-  const { darkMode, blogRef, blogs, setBlogs } = useContext(Context)
+  const { darkMode, setActive, blogs, setBlogs } = useContext(Context)
   useEffect(() => {
     if (data) {
       setBlogs(data)
     }
   }, [data])
+
+  useEffect(() => {
+    setActive('blog')
+  }, [])
 
   const fetchMoreBlogs = async () => {
     let rawData = await fetch(`${process.env.NEXT_PUBLIC_URI}/api/fetchBlogs`, {
@@ -101,7 +102,7 @@ const Blog = ({ data, totalBlogs }) => {
       }
       `}</style>
 
-    <div className={`${darkMode ? 'dark-scroll' : 'light-scroll'}`}>
+    <div>
 
       <Head>
         <title>sambhav-kaushik | blogs</title>
@@ -123,7 +124,7 @@ const Blog = ({ data, totalBlogs }) => {
           <main className='w-full min-h-screen transition-all duration-300 ease-in-out'>
 
             {/* blogs */}
-            <div ref={blogRef} id='blogs' className="w-full pt-10 mb-10 overflow-hidden flex flex-col min-h-screen">
+            <div id='blogs' className="w-full pt-10 mb-10 overflow-hidden flex flex-col min-h-screen">
 
               <div className=" px-10 flex items-center w-full justify-between">
                 <h1 className="text-2xl sm:text-4xl text-center font-bold mb-4 my-5 mr-4">Blogs</h1>

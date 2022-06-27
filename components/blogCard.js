@@ -6,7 +6,7 @@ const BlogCard = ({data}) => {
     const {darkMode}= useContext(Context)
   return (
     <div className={`w-full`}>
-        <div className={`py-8 px-4 my-2 rounded-2xl shadow-lg flex flex-wrap sm:flex-nowrap ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+        <div className={`py-8 px-4 my-2 rounded-2xl shadow-lg flex flex-wrap sm:flex-nowrap ${darkMode ? 'bg-gray-800' : 'bg-slate-100'}`}>
         <div className={`sm:w-1/4 w-full sm:mb-0 mb-4 flex-shrink-0 flex flex-col sm:border-none border-b ${darkMode?'border-white':'border-gray-900'} sm:pb-0 pb-4`}>
           <span className={`font-semibold title-font opacity-60 text-base sm:text-lg`}>By {data.author.name}</span>
           <span className={`mt-1 opacity-60 text-sm sm:text-base`}>On {new Date(data._createdAt).toLocaleString('en-US', {

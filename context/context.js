@@ -23,32 +23,7 @@ export const ContextProvider = ({ children }) => {
   const [contactRef, contactInView] = useInView()
   const [blogRef, blogInView] = useInView()
 
-  const dataPie = {
-    labels: ['Java', 'JavaScript', 'Python', 'HTML/CSS', 'C++', 'Solidity'],
-    datasets: [
-      {
-        label: '# of Votes',
-        data: [5, 30, 25, 15, 10, 15],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(255, 206, 86, 0.5)',
-          'rgba(75, 192, 192, 0.5)',
-          'rgba(153, 102, 255, 0.5)',
-          'rgba(255, 159, 64, 0.5)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(255, 206, 86, 0.5)',
-          'rgba(75, 192, 192, 0.5)',
-          'rgba(153, 102, 255, 0.5)',
-          'rgba(255, 159, 64, 0.5)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  
 // ---------------------------------------------------
   // animation states 
   // aboutImg
@@ -435,7 +410,7 @@ useEffect(() => {
 
 
   return (
-    <Context.Provider value={{ router, darkMode, setDarkMode, menuOpen, setMenuOpen, isSending, setIsSending, aboutImgAnimation, aboutImgRef , aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, experienceWorkflowAnimation, experienceWorkflowRef, experienceBarAnimation, experienceBarRef, experienceBarSmAnimation, experienceBarSmRef, projectItemAnimation, projectItemRef, contactFormAnimation, contactFormRef, contactDetailAnimation, contactDetailRef, dataPie, navSm, displayFixed, navInit, displayFixedAnimation, homeRef, aboutRef, experienceRef, projectRef, blogRef, contactRef, active, blogs, setBlogs }}>
+    <Context.Provider value={{ setActive, router, darkMode, setDarkMode, menuOpen, setMenuOpen, isSending, setIsSending, aboutImgAnimation, aboutImgRef , aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, experienceWorkflowAnimation, experienceWorkflowRef, experienceBarAnimation, experienceBarRef, experienceBarSmAnimation, experienceBarSmRef, projectItemAnimation, projectItemRef, contactFormAnimation, contactFormRef, contactDetailAnimation, contactDetailRef, navSm, displayFixed, navInit, displayFixedAnimation, homeRef, aboutRef, experienceRef, projectRef, blogRef, contactRef, active, blogs, setBlogs }}>
       {children}
     </Context.Provider>
   )

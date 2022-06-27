@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Context } from '../context/context'
 import Navbar from '../components/Navbar'
@@ -15,99 +14,16 @@ import { AiOutlineDownload } from 'react-icons/ai'
 import Quicknav from '../components/Quicknav'
 import LineChart from '../components/LineChart'
 import Workflow from '../components/Workflow'
+import { client } from '../lib/sanityClient'
 
-const data = {
-  name: 'Sambhav Kaushik',
-  coverSkills: ['a Full-stack Web developer', 'a UI/UX designer', 'an App developer', 'a Data manager', 'a Logo designer', 'a 3-D modeler', 'an Animator', 'a Programmer'],
-  aboutImg: "/photo2.jpg",
-  about: ['I am a Software Developer located in India. I have always been interested in learning modern technologies and using them to create some awsome real world projects.', 'I am a well organised person, a problem solver, a good planner and a deep thinker. While working on a project, my primary goal is to create the best possible project at the lowest possible cost of development. For acomplishing this task I use multiple open source, and sometimes paid, tools. With this I have been able to to deliver the best user experience, at the same time, keeping the code base clean, readable and easily managable.'],
-  experience: ["Since beginning my journey as a software developer nearly 2 years ago, I've done work on multiple, small, medium and large scale, projects, and collaborated with talented people to gain and exchange knowledge.", "I create successful multi-platform web and mobile apps that are fast, user friendly, and built with best practices. The main areas of my expertise is Full-stack development (front-end as well as back-end web development), Native mobile app development, UI/UX designing, Databases, Cloud computing, Blockchain, Logics and Algorithems, Cyber sequrity.", "I use multiple tools (like HTML/CSS, Javascript, Python, Java, C++, Solidity, TailwinCSS, Bootstrap, ReactJS, NextJS, NodeJS, Express, Flask, Django, MongoDB, Sanity, PostgreDB, Stapi, etc) for development to make the process easy to understand, quick and scalable. I also have some experience of working with some web builders (like Wordpress, Shopify and others)."],
-  pieChart: {
-    labels: ['Java', 'JavaScript', 'Python', 'HTML/CSS', 'C++', 'Solidity'],
-    datasets: [
-      {
-        label: '# of Votes',
-        data: [5, 30, 25, 15, 10, 15],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(255, 206, 86, 0.5)',
-          'rgba(75, 192, 192, 0.5)',
-          'rgba(153, 102, 255, 0.5)',
-          'rgba(255, 159, 64, 0.5)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(255, 206, 86, 0.5)',
-          'rgba(75, 192, 192, 0.5)',
-          'rgba(153, 102, 255, 0.5)',
-          'rgba(255, 159, 64, 0.5)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  },
-  lineChart: [
-    {
-      title: 'UX/UI designing | Web animation',
-      width: 'w-10/12',
-      color: 'bg-green-500',
-    },
-    {
-      title: 'Full-stack web development | Logics and Algorithems',
-      width: 'w-full',
-      color: 'bg-red-500',
-    },
-    {
-      title: 'App development',
-      width: 'w-11/12',
-      color: 'bg-cyan-500',
-    },
-    {
-      title: 'Logo designing | 3D modelling | Video animation',
-      width: 'w-8/12',
-      color: 'bg-violet-500',
-    },
-    {
-      title: 'Database | Blockchain | Cloud computing | Cyber sequrity',
-      width: 'w-10/12',
-      color: 'bg-orange-500',
-    },
-  ],
-  projects: [
-    {
-      img: '/evergoods.png',
-      body: 'This is a modern looking E-Commerce website with great user experience and modern features.',
-      url: 'https://evergoods.vercel.app/'
-    },
-    {
-      img: '/uniswap.png',
-      body: 'This is a Web 3.0 app which allow you to send crypto currency to other wallets.',
-      url: 'https://uniswap-chi.vercel.app/'
-    },
-    {
-      img: '/nft-lister.png',
-      body: 'A simple website to display your nft artworks.',
-      url: 'https://nft-lister.vercel.app/'
-    }
-  ],
-  facebook :'/',
-  instagram :'/',
-  twitter :'/',
-  linkedin :'/',
-  github :'/',
-  location: 'Uttarakhand, India',
-  contactNumber: '+91 6397511127',
-  eamilAddress: 'sambhavkaushik376@gmail.com',
-}
+export default function Home({data}) {
 
-export default function Home() {
-
-  const { darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, projectItemRef, dataPie, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
+  const { darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, projectItemRef, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
 
   return (
-    <div>
+    <>
+    {
+      data && <div>
 
       <style jsx global>{`
         ::-webkit-scrollbar {
@@ -141,7 +57,6 @@ export default function Home() {
         <title>sambhav-kaushik</title>
         <meta name="description" content="Generated by create next app" />
         <link rel="icon" href={`${darkMode ? '/teal.svg' : '/purple.svg'}`} />
-        <link rel="stylesheet" href={`${darkMode ? '../styles/darkscroll.css' : '../styles/lightscroll.css'}`} />
       </Head>
 
       {/* bg */}
@@ -151,7 +66,7 @@ export default function Home() {
       <Wave />
 
       {/* quiknav */}
-      <Quicknav data={{facebook :'/', instagram :'/', twitter :'/', linkedin :'/', github :'/'}}/>
+      <Quicknav data={{facebook :data.facebook, instagram :data.instagram, twitter :data.twitter, linkedin :data.linkedin, github :data.github}}/>
 
       {/* app  */}
       <div className={`relative z-10 min-h-screen w-full transition-all duration-300 ease-in-out ${darkMode ? 'text-teal-500' : 'text-purple-600'}`}>
@@ -223,7 +138,7 @@ export default function Home() {
                           {experiencePara}
                           <br />
                           {index == 0 ? <motion.div ref={experiencePieSmRef} animate={experiencePieSmAnimation} className="w-full sm:hidden block py-5 max-w-sm sm:w-1/3 mx-auto">
-                            <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={dataPie} />
+                            <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={{labels:data.pieChart[0].labels, datasets:[{label:data.pieChart[0].datasets[0].label,data:data.pieChart[0].datasets[0].data, borderColor:data.pieChart[0].datasets[0].borderColor, backgroundColor:data.pieChart[0].datasets[0].backgroundColor, borderWidth:data.pieChart[0].datasets[0].borderWidth}]}} />
                           </motion.div> : ''}
                           {index == 1 ? <div className={`w-full py-5 text-sm ${darkMode ? 'text-white' : 'text-black'} sm:hidden block`}>
                             <LineChart data={data.lineChart} isSm={true} />
@@ -242,18 +157,18 @@ export default function Home() {
 
                 <div className="flex flex-row sm:flex-col justify-start items-start px-10 py-5 w-full sm:w-1/3 ">
                   <motion.div ref={experiencePieRef} animate={experiencePieAnimation} className="w-full hidden sm:block">
-                    <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={data.pieChart} />
+                    <Doughnut className='hover:scale-105 transition-all duration-300 ease-out' data={{labels:data.pieChart[0].labels, datasets:[{label:data.pieChart[0].datasets[0].label,data:data.pieChart[0].datasets[0].data, borderColor:data.pieChart[0].datasets[0].borderColor, backgroundColor:data.pieChart[0].datasets[0].backgroundColor, borderWidth:data.pieChart[0].datasets[0].borderWidth}]}} />
                   </motion.div>
                 </div>
 
               </div>
 
               {/* workflow  */}
-              <Workflow />
+              <Workflow data={data.Workflow} />
 
             </div>
 
-            {/* semi-projects */}
+            {/* projects */}
             <div ref={projectRef} id='project' className="w-full pt-10 mb-10 overflow-hidden flex flex-col justify-center min-h-screen">
               <h1 className="text-2xl sm:text-4xl text-center font-bold mb-4 my-5">My Portfolio</h1>
               <div ref={projectItemRef} className="px-10 pb-5 w-full">
@@ -262,8 +177,8 @@ export default function Home() {
                   <div className="w-full px-5 py-4 mx-auto">
                     <div className="flex flex-wrap -m-4">
 
-                      {data.projects.map((project, index) => {
-                        return <ProjectItem key={index} details={project} />
+                      {data.projects[0].img.map((img, index) => {
+                        return <ProjectItem key={index} details={{img:img, body:data.projects[0].body[index], url:data.projects[0].url[index]}} />
                       })}
 
                     </div>
@@ -276,10 +191,24 @@ export default function Home() {
           </main>
         </div>
 
-        <Footer data={{facebook :'/', instagram :'/', twitter :'/', linkedin :'/', github :'/', location: 'Uttarakhand, India', contactNumber: '+91-6397511127', emailAddress: 'sambhavkaushik376@gmail.com'}} />
+        <Footer data={{facebook :data.facebook, instagram :data.instagram, twitter :data.twitter, linkedin :data.linkedin, github :data.github, location: data.location, contactNumber: data.contactNumber, emailAddress: data.emailAddress}} />
 
       </div>
 
     </div>
+    }
+    </>
   )
+}
+
+export async function getStaticProps(context) {
+  let result
+  await client.fetch(`*[_type == "data"]{name, 'aboutImg':aboutImg.asset->.url, coverSkills, about, experience, lineChart, workflow, "projects":[{"img":projects[].img.asset->.url, "body":projects[].body, "url":projects[].url}], pieChart, facebook, instagram, twitter, linkedin, github, location, contactNumber, emailAddress}[]`).then((results) => {
+    if(results[0]){
+      result = results[0]
+    }
+  })
+  return {
+    props: { data: JSON.parse(JSON.stringify(result)) },
+  }
 }

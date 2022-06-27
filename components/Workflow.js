@@ -4,7 +4,7 @@ import { Context } from '../context/context'
 import { GiBrain, GiNotebook } from 'react-icons/gi'
 import { FaAssistiveListeningSystems, FaLaptopCode, FaCheckCircle } from 'react-icons/fa'
 
-const Workflow = () => {
+const Workflow = ({data}) => {
     const { experienceWorkflowAnimation, experienceWorkflowRef, darkMode } = useContext(Context)
 
   return (
@@ -12,7 +12,6 @@ const Workflow = () => {
                 <motion.div animate={experienceWorkflowAnimation} className="px-5 py-5 mx-auto flex flex-col items-start flex-wrap">
 
                   <p className={`text-lg mb-2 ${darkMode ? 'text-teal-500' : 'text-purple-600'} text-center font-medium w-full`}>My Workflow</p>
-
 
                   <div className="flex relative py-5 w-full sm:items-center sm:w-1/2 mx-auto">
                     <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
@@ -89,7 +88,7 @@ const Workflow = () => {
                       </div>
                       <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                         <h2 className={`font-medium title-font mb-1 text-xl`}>Completion</h2>
-                        <p className="leading-relaxed">Finally, I test the product and deliver it.</p>
+                        <p className="leading-relaxed">Finally, I test the product and the product is now ready to be used.</p>
                       </div>
                     </div>
                   </div>
