@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Context } from '../context/context'
@@ -18,12 +18,17 @@ import { client } from '../lib/sanityClient'
 
 export default function Home({data}) {
 
-  const { darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, projectItemRef, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
+  const { setActive, darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, projectItemRef, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
+
+  useEffect(() => {
+    setActive('home')
+  }, [])
+  
 
   return (
     <>
     {
-      data && <div>
+      data && <div classNmae={`${darkMode?'bg-gray-900':'bg-white'}`}>
 
       <style jsx global>{`
         ::-webkit-scrollbar {

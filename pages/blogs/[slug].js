@@ -63,7 +63,7 @@ const Post = ({ blog }) => {
         scroll-behavior: smooth;
       }
       `}</style>
-          <div>
+          <div classNmae={`${darkMode?'bg-gray-900':'bg-white'}`}>
 
             <Head>
               <title>sambhav-kaushik | blogs</title>

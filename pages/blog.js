@@ -102,7 +102,7 @@ const Blog = ({ data, totalBlogs }) => {
       }
       `}</style>
 
-    <div>
+    <div classNmae={`${darkMode?'bg-gray-900':'bg-white'}`}>
 
       <Head>
         <title>sambhav-kaushik | blogs</title>
