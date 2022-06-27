@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Context } from '../context/context'
