@@ -82,8 +82,8 @@ export default function Home({data}) {
 
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="flex text-2xl font-bold sm:text-4xl flex-col justify-center px-10 py-5 w-full sm:w-1/2">
 
-                <div className={`transition-all duration-300 ease-out`}><span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>Hi, I'm </span>{data.name}</div>
-                <div className={`transition-all duration-300 ease-out`}><span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>I'm </span><Typewriter
+                <div className={`transition-all duration-300 ease-out`}><span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>Hi, I`&apos;`m </span>{data.name}</div>
+                <div className={`transition-all duration-300 ease-out`}><span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>I`&apos;`m </span><Typewriter
                   options={{
                     strings: data.coverSkills,
                     autoStart: true,
@@ -203,7 +203,7 @@ export default function Home({data}) {
 
 export async function getStaticProps(context) {
   let result
-  await client.fetch(`*[_type == "data"]{name, 'aboutImg':aboutImg.asset->.url, coverSkills, about, experience, lineChart, workflow, "projects":[{"img":projects[].img.asset->.url, "body":projects[].body, "url":projects[].url}], pieChart, facebook, instagram, twitter, linkedin, github, location, contactNumber, emailAddress}[]`).then((results) => {
+  await client.fetch(`*[_type == "data"]{name, 'aboutImg':aboutImg.asset->.url, coverSkills, about, experience, lineChart, "projects":[{"img":projects[].img.asset->.url, "body":projects[].body, "url":projects[].url}], pieChart, facebook, instagram, twitter, linkedin, github, location, contactNumber, emailAddress}[]`).then((results) => {
     if(results[0]){
       result = results[0]
     }
