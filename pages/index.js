@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ProjectItem from '../components/ProjectItem'
 import Typewriter from 'typewriter-effect';
-import Bg from '../components/Bg'
 import { Doughnut } from 'react-chartjs-2'
 import { Wave, Bitmoji } from '../components/Svgs'
 import { motion } from 'framer-motion'
@@ -28,7 +27,7 @@ export default function Home({data}) {
   return (
     <>
     {
-      data && <div classNmae={`${darkMode?'bg-gray-900':'bg-white'}`}>
+      data && <div className={`${darkMode?'bg-gray-900':'bg-white'}`}>
 
       <style jsx global>{`
         ::-webkit-scrollbar {
@@ -64,9 +63,6 @@ export default function Home({data}) {
         <link rel="icon" href={`${darkMode ? '/teal.svg' : '/purple.svg'}`} />
       </Head>
 
-      {/* bg */}
-      <Bg />
-
       {/* design  */}
       <Wave />
 
@@ -87,8 +83,8 @@ export default function Home({data}) {
 
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="flex text-2xl font-bold sm:text-4xl flex-col justify-center px-10 py-5 w-full sm:w-1/2">
 
-                <div className={`transition-all duration-300 ease-out`}><span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>Hi, I`&apos;`m </span>{data.name}</div>
-                <div className={`transition-all duration-300 ease-out`}><span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>I`&apos;`m </span><Typewriter
+                <div className={`transition-all duration-300 ease-out`}><span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>Hi, I&apos;m </span>{data.name}</div>
+                <div className={`transition-all duration-300 ease-out`}><span className={`${darkMode ? 'text-white' : 'text-gray-900'}`}>I&apos;m </span><Typewriter
                   options={{
                     strings: data.coverSkills,
                     autoStart: true,

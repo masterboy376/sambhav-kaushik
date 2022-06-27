@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/context'
 import Head from 'next/head'
-import Bg from '../components/Bg'
 import Navbar from '../components/Navbar'
 import BlogCard from '../components/BlogCard'
 import { client } from '../lib/sanityClient'
@@ -102,7 +101,7 @@ const Blog = ({ data, totalBlogs }) => {
       }
       `}</style>
 
-    <div classNmae={`${darkMode?'bg-gray-900':'bg-white'}`}>
+    <div className={`${darkMode?'bg-gray-900':'bg-white'}`}>
 
       <Head>
         <title>sambhav-kaushik | blogs</title>
@@ -110,8 +109,6 @@ const Blog = ({ data, totalBlogs }) => {
         <link rel="icon" href={`${darkMode ? '/teal.svg' : '/purple.svg'}`} />
       </Head>
 
-      {/* bg */}
-      <Bg />
 
       {/* app  */}
       <div className={`relative z-10 min-h-screen w-full transition-all duration-300 ease-in-out ${darkMode ? 'text-teal-500' : 'text-purple-600'}`}>
