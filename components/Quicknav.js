@@ -21,11 +21,11 @@ const Quicknav = ({data}) => {
                 <Link href={data.github}><p className={`${darkMode ? 'text-white' : 'text-gray-900'}  mb-20 cursor-pointer hover:opacity-60 transition-all ease-in-out duration-300`}><BsGithub size={20} /></p></Link>
             </div>
 
-            <div className={`flex absolute top-96 -right-60 sm:-right-64 -rotate-90 z-40`}>
-                <Link href={'#contact'}><p className={`ml-6 transition-all duration-300 ease-in-out animate-bounce hover:opacity-60 text-sm sm:text-base ${darkMode ? 'text-white' : 'text-gray-900'} flex items-center cursor-pointer font-medium`}><AiOutlineArrowLeft className={`mr-1`} size={24} />Contact Me</p></Link>
-                <Link href={'#project'}><p className={`ml-6 transition-all duration-300 ease-in-out animate-bounce hover:opacity-60 text-sm sm:text-base ${darkMode ? 'text-white' : 'text-gray-900'} flex items-center cursor-pointer font-medium`}><AiOutlineArrowLeft className={`mr-1`} size={24} />My Work</p></Link>
-                <Link href={'#experience'}><p className={`ml-6 transition-all duration-300 ease-in-out animate-bounce hover:opacity-60 text-sm sm:text-base ${darkMode ? 'text-white' : 'text-gray-900'} flex items-center cursor-pointer font-medium`}><AiOutlineArrowLeft className={`mr-1`} size={24} />My Experience</p></Link>
-                <Link href={'#about'}><p className={`ml-6 transition-all duration-300 ease-in-out animate-bounce hover:opacity-60 text-sm sm:text-base ${darkMode ? 'text-white' : 'text-gray-900'} flex items-center cursor-pointer font-medium`}><AiOutlineArrowLeft className={`mr-1`} size={24} />About Me</p></Link>
+            <div className={`flex absolute top-96 -right-56 sm:-right-64 -rotate-90 z-40`}>
+                <Link href={'#contact'}><p className={`ml-6 mb-0 pb-0 transition-all duration-300 ease-in-out animate-bounce hover:opacity-60 text-sm sm:text-base ${darkMode ? 'text-white' : 'text-gray-900'} flex items-center cursor-pointer font-medium`}><AiOutlineArrowLeft className={`mr-1`} size={24} />Contact Me</p></Link>
+                <Link href={'#project'}><p className={`ml-6 mb-0 pb-0 transition-all duration-300 ease-in-out animate-bounce hover:opacity-60 text-sm sm:text-base ${darkMode ? 'text-white' : 'text-gray-900'} flex items-center cursor-pointer font-medium`}><AiOutlineArrowLeft className={`mr-1`} size={24} />My Work</p></Link>
+                <Link href={'#experience'}><p className={`ml-6 mb-0 pb-0 transition-all duration-300 ease-in-out animate-bounce hover:opacity-60 text-sm sm:text-base ${darkMode ? 'text-white' : 'text-gray-900'} flex items-center cursor-pointer font-medium`}><AiOutlineArrowLeft className={`mr-1`} size={24} />My Experience</p></Link>
+                <Link href={'#about'}><p className={`ml-6 mb-0 pb-0 transition-all duration-300 ease-in-out animate-bounce hover:opacity-60 text-sm sm:text-base ${darkMode ? 'text-white' : 'text-gray-900'} flex items-center cursor-pointer font-medium`}><AiOutlineArrowLeft className={`mr-1`} size={24} />About Me</p></Link>
             </div>
 
         </motion.div>

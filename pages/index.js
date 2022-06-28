@@ -27,8 +27,7 @@ export default function Home({data}) {
   return (
     <>
     {
-      data && <div className={`${darkMode?'bg-gray-900':'bg-white'}`}>
-
+      data && <>
       <style jsx global>{`
         ::-webkit-scrollbar {
           width: 8px;
@@ -56,6 +55,8 @@ export default function Home({data}) {
         scroll-behavior: smooth;
       }
       `}</style>
+      
+      <div className={`${darkMode?'bg-gray-900':'bg-white'}`}>
 
       <Head>
         <title>sambhav-kaushik</title>
@@ -196,7 +197,7 @@ export default function Home({data}) {
 
       </div>
 
-    </div>
+    </div></>
     }
     </>
   )

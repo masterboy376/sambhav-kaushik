@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function MyApp({ Component, pageProps }) {
   return <>
     <ContextProvider>
-      <div className="overflow-x-hidden transition-all duration-300 ease-in-out">
+      <div className="overflow-x-hidden bg-gray-900 transition-all duration-300 ease-in-out">
         <Component {...pageProps} />
       </div>
     </ContextProvider>
