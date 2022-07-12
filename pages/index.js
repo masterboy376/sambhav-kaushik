@@ -15,7 +15,7 @@ import LineChart from '../components/LineChart'
 import Workflow from '../components/Workflow'
 import { client } from '../lib/sanityClient'
 
-export default function Home({data}) {
+export default function Home({data, cvUrl}) {
 
   const { setActive, darkMode, aboutImgAnimation, aboutImgRef, aboutTextAnimation, aboutTextRef, experiencePieAnimation, experiencePieRef, experiencePieSmAnimation, experiencePieSmRef, experienceTextAnimation, experienceTextRef, projectItemRef, homeRef, aboutRef, experienceRef, projectRef } = useContext(Context)
 
@@ -93,7 +93,9 @@ export default function Home({data}) {
                   }}
                 /></div>
 
-                <Link href={'/SOP.pdf'} ><a download target='_blank' className={`my-5 flex items-center text-lg sm:text-xl font-bold ${darkMode ? 'text-teal-500' : 'text-purple-600'} transition-all duration-300 ease-in-out hover:underline underline-offset-4 cursor-pointer font-medium tracking-wider text-sm`}>Download my CV <AiOutlineDownload size={24} className={`ml-1`} /></a></Link>
+                <Link href={`${cvUrl}?dl=sambhav-kaushik-cv.pdf`}>
+                <a className={`my-5 flex items-center text-lg sm:text-xl font-bold ${darkMode ? 'text-teal-500' : 'text-purple-600'} transition-all duration-300 ease-in-out hover:underline underline-offset-4 cursor-pointer font-medium tracking-wider text-sm`}>Download my CV <AiOutlineDownload size={24} className={`ml-1`} /></a>
+                </Link>
 
               </motion.div>
               <div className="w-full sm:w-1/2 py-5 max-w-sm mx-auto px-10">
@@ -123,7 +125,7 @@ export default function Home({data}) {
                         <br />
                       </span>
                     })}
-                    Looking forward to work with you. <Link href={'/SOP.pdf'}><a download target={'_blank'} className={`hover:underline underline-offset-4 transition-all duration-300 ease-in-out cursor-pointer ${darkMode ? 'text-teal-500' : 'text-purple-600'}`}>Download</a></Link> my CV here.</span></p>
+                    Looking forward to work with you. <Link href={`${cvUrl}?dl=sambhav-kaushik-cv.pdf`}><a className={`hover:underline underline-offset-4 transition-all duration-300 ease-in-out cursor-pointer ${darkMode ? 'text-teal-500' : 'text-purple-600'}`}>Download</a></Link> my CV here.</span></p>
                 </motion.div>
               </div>
             </div>
@@ -205,12 +207,18 @@ export default function Home({data}) {
 
 export async function getStaticProps(context) {
   let result
+  let cvUrl
   await client.fetch(`*[_type == "data"]{name, 'aboutImg':aboutImg.asset->.url, coverSkills, about, experience, lineChart, "projects":[{"img":projects[].img.asset->.url, "body":projects[].body, "url":projects[].url}], pieChart, facebook, instagram, twitter, linkedin, github, location, contactNumber, emailAddress}[]`).then((results) => {
     if(results[0]){
       result = results[0]
     }
   })
+  await client.fetch(`*[_type == "resume"]{"fileUrl":cv.asset->url}[]`).then((results) => {
+    if(results[0]){
+      cvUrl = results[0].fileUrl
+    }
+  })
   return {
-    props: { data: JSON.parse(JSON.stringify(result)) },
+    props: { data: JSON.parse(JSON.stringify(result)), cvUrl },
   }
 }
