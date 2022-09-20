@@ -11,14 +11,14 @@ Motivated Web Developer with around 2 Years for experience of creating and maint
 ## Skills
 - **Full Stack Web Development (HTML, CSS, JavaScript & Typescript, Python, NextJS, NodeJS, Django etc.)** - (Advance)
 - **User Interface Designing (ReactJS, Bootstrap, TailwindCSS, CSS, etc.)** - (Advance)
-- ** Database Management Systems (MySQL, PostgreSQL, MongoDB, SQL, GraphQL, Sanity, etc.)** - (Advance)
-- ** Web hosting and cloud computing (Docker, Cloud VPS, DigitalOcean, AWS, Firebase, etc.)** - (Advance)
+- **Database Management Systems (MySQL, PostgreSQL, MongoDB, SQL, GraphQL, Sanity, etc.)** - (Advance)
+- **Web hosting and cloud computing (Docker, Cloud VPS, DigitalOcean, AWS, Firebase, etc.)** - (Advance)
 - **Logo Designing** - (Advance)
 - **Mobile App Development (React Native, Java, expoCLI, etc.)** - (Highly competent)
 - **2D/3D modelling and animation** - (Intermediate)
 - **System Architecture and DevOps** - (Advance)
 - **Data Structures and Algorithms (C/C++, Java, etc.)** - (Advance)
-- ** Data Structures and Algorithms (C/C++, Java, etc.)** - (Highly competent)
+- **Data Structures and Algorithms (C/C++, Java, etc.)** - (Highly competent)
 - **SEO and Analytics Techniques** - (Advance)
 
 ## Work Experience
