@@ -5,28 +5,21 @@
 **Email**: sambhavkaushik376@gmail.com ;
 **Website**: https://sambhav-kaushik.vercel.app/ ;
 
-Motivated Web Developer with around 2 Years for experience of creating and maintaining multiple modern, scalable and responsive web and mobile applications serving various purposes. Team friendly, adaptive and improvement driven developer with command on various programming languages ( like JavaScript & TypeScript, Python, C & C++, Java, etc. ), frameworks & libraries ( ReactJS, NextJS, NodeJS, Django, etc. ), databases ( like MongoDB, PostgreSQL, etc. ), utility software, best practices and system analytics. organized, punctual and trustable person ready to contribute.
+Motivated Web Developer with around 2 Years for experience of creating and maintaining multiple modern, scalable and responsive web and mobile applications serving various purposes. Team friendly, adaptive and improvement driven developer with command on various programming languages, frameworks & libraries, databases, utility software, best practices and system analytics and management. Organised, punctual and trustable person ready to contribute.
 
 
 ## Skills
-- **Full Stack Web Development** -   (Advance)
-- **User Interface Designing** - (Advance)
-- **Database Management Systems** - (Advance)
-- **Web hosting and cloud computing** - (Advance)
- - **Logo Designing** - (Advance)
- - **Mobile App Development** - (Higher competent)
- - **3D modelling** - (Intermediate)
- - **System Architecture and Project Management** - (Higher competent)
- - **Data Structures and Algorithms** - (Higher competent)
- - **Blockchain** - (Competent)
- - **SEO and Analytics Techniques** - (Advance)
-
-
-# Publication
-
-Publishing in StackEdit makes it simple for you to publish online your files. Once you're happy with a file, you can publish it to different hosting platforms like **Blogger**, **Dropbox**, **Gist**, **GitHub**, **Google Drive**, **WordPress** and **Zendesk**. With [Handlebars templates](http://handlebarsjs.com/), you have full control over what you export.
-
-> Before starting to publish, you must link an account in the **Publish** sub-menu.
+- **Full Stack Web Development (HTML, CSS, JavaScript & Typescript, Python, NextJS, NodeJS, Django etc.)** - (Advance)
+- **User Interface Designing (ReactJS, Bootstrap, TailwindCSS, CSS, etc.)** - (Advance)
+- ** Database Management Systems (MySQL, PostgreSQL, MongoDB, SQL, GraphQL, Sanity, etc.)** - (Advance)
+- ** Web hosting and cloud computing (Docker, Cloud VPS, DigitalOcean, AWS, Firebase, etc.)** - (Advance)
+- **Logo Designing** - (Advance)
+- **Mobile App Development (React Native, Java, expoCLI, etc.)** - (Highly competent)
+- **2D/3D modelling and animation** - (Intermediate)
+- **System Architecture and DevOps** - (Advance)
+- **Data Structures and Algorithms (C/C++, Java, etc.)** - (Advance)
+- ** Data Structures and Algorithms (C/C++, Java, etc.)** - (Highly competent)
+- **SEO and Analytics Techniques** - (Advance)
 
 ## Work Experience
 ***Freelance Web Developer*** - **(2020-07 - current)** 
@@ -40,13 +33,10 @@ I Have worked on various application development during this duration to accurat
 - Providing the maintenance service to the client as per the terms and requirements.
 
 ## Education
-
 **High School Diploma: Science with Mathematics** - **(2021-04 - 2022-07)**
 S.G.R.R Public School Race Course - Dehradun
 
 ## Languages
-
-
 - **English** -   (Advance)
 - **Hindi** - (Advance)
 - **German** - (Lower Intermediate)
