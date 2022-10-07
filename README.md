@@ -1,7 +1,7 @@
 # Sambhav Kaushuk 
 >  ***Full Stack Web Developer***;
 **Address**: 398, Nanak Vihar, D.dun, UT, India, 248001;
-**Phone**: +91 6397511127;
+**Phone**: +91 9368671522;
 **Email**: sambhavkaushik376@gmail.com ;
 **Website**: https://sambhav-kaushik.vercel.app/ ;
 
