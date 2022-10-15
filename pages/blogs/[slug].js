@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { client } from '../../lib/sanityClient'
 import PortableText from "react-portable-text"
-import Script from 'next/script'
 
 const Post = ({ blog }) => {
   const { darkMode, setActive, router } = useContext(Context)
@@ -29,6 +28,9 @@ const Post = ({ blog }) => {
     li: ({ children }) => <li className="special-list-item">{children}</li>,
     ul: ({ children }) => <ul style={{ listStyleType: "disc", padding: "10px" }}>{children}</ul>,
     ol: ({ children }) => <ol style={{ listStyleType: "decimal", padding: "10px" }}>{children}</ol>,
+    code: ({ children }) => <a onClick={(e)=>{
+      navigator.clipboard.writeText(e.target.innerText)
+    }} className={`w-full block hover:opacity-100 transition-all duration-300 cursor-pointer m-2 p-2 border-l opacity-70 rounded-xl ${darkMode?'border-teal-500 bg-gray-800':'border-purple-600 bg-gary-100'}`}>{children}</a>
   }
 
   return (
@@ -104,12 +106,7 @@ const Post = ({ blog }) => {
                     </div>
 
                     {/* timestamp */}
-                    <p className={`mb-2 sm:text-base text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>Published on {new Date(blog._createdAt).toLocaleString('en-US', {
-                      timeZone: 'IST',
-                      hour12: true,
-                      timeStyle: 'short',
-                      dateStyle: 'long',
-                    })}</p>
+                    <span suppressHydrationWarning className={`mb-2 sm:text-base text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>{`Published on ${new Date(blog._createdAt)}`}</span>
                     {/* categories */}
                     <p className={`mb-2 sm:text-base text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}><span className='font-bold'>Categories: </span>{blog.categories.map((category, index) => {
                       if (index == blog.categories.length - 1) {
@@ -124,14 +121,14 @@ const Post = ({ blog }) => {
                       <img src={blog.mainImage.url} alt="" className=' w-full mx-auto rounded' />
                     </div>
                     {/* content */}
-                    <div className={`sm:text-base text-sm mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    <section className={`sm:text-base text-sm mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                       <PortableText
                         content={blog.body}
                         serializers={serializers}
                         projectId={process.env.SANITY_PROJECT_ID}
                         dataset={process.env.SANITY_DATASET}
                       />
-                    </div>
+                    </section>
                     <hr className={`my-2 mx-auto opacity-70 border ${darkMode ? 'border-white' : 'border-gray-900'} w-64`} />
                   </div>
 
@@ -145,7 +142,6 @@ const Post = ({ blog }) => {
             </div>
 
           </div>
-          <Script src="../../assets/prism.js" />
         </>
       }
     </>
