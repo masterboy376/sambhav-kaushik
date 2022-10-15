@@ -27,7 +27,7 @@ Motivated Web Developer with around 2 Years for experience of creating and maint
 
 I Have worked on various application development during this duration to accurately fulfil all the requirements required by the client. As a **full stack developer** my sole responsibilities are as follows:
 
-- Planning architecture, functionalities, and technologies for the application as per the client's requirements.
+- Planning architecture, functionalities, and technologies for the application as per the client's requirements. 
 - Developing a modern, maintainable, scalable and resilient application using the best practices.
 - Testing the system properly before hosting or delivering the project.
 - Providing the maintenance service to the client as per the terms and requirements.
