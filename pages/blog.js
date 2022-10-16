@@ -20,7 +20,7 @@ const Blog = ({ data, totalBlogs }) => {
     if (searchValue.length != 0) {
       console.log(data[0])
       let newBlogsArray = [...data]
-      for (let i = 0; i < data.length; i++) {
+      for (let i = data.length-1; i >= 0; i--) {
         if (data[i].title.toLowerCase().includes(searchValue.toLowerCase()) || data[i].author.name.toLowerCase().includes(searchValue.toLowerCase()) || data[i].metaData.toLowerCase().includes(searchValue.toLowerCase()) ||
           new Date(data[i]._createdAt).toLocaleString('en-US', {
             timeZone: 'IST',
@@ -181,7 +181,7 @@ export async function getStaticProps(context) {
     blogsArray = blogs.splice(0, 10)
   })
   return {
-    props: { data: JSON.parse(JSON.stringify(blogsArray)), totalBlogs },
+    props: { data: JSON.parse(JSON.stringify(blogsArray.reverse())), totalBlogs },
   }
 }
 
