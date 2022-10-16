@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Context } from '../../context/context'
 import Head from 'next/head'
+import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Link from 'next/link'
 import { IoMdArrowRoundBack } from 'react-icons/io'
@@ -92,7 +93,7 @@ const Post = ({ blog }) => {
 
                         <div className={`mb-2 sm:text-base text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                           <div className="flex w-full items-center">
-                            <img src={blog.authorImg.url} alt="" className={`rounded-full w-12 h-12`} />
+                            <Image width={50} height={50} src={blog.authorImg.url} alt="" className={`rounded-full w-12 h-12`} />
                             <span className="ml-4 text-base sm:text-lg font-bold">by {blog.author.name}</span>
                           </div>
                           <div className="sm:text-base text-sm">
@@ -118,7 +119,7 @@ const Post = ({ blog }) => {
                     })}</p>
                     {/* main image */}
                     <div className="w-full my-2">
-                      <img src={blog.mainImage.url} alt="" className=' w-full mx-auto rounded' />
+                      <Image width={1000} height={500} src={blog.mainImage.url} alt="" className=' w-full mx-auto rounded' />
                     </div>
                     {/* content */}
                     <section className={`sm:text-base text-sm mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
