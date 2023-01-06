@@ -22,13 +22,13 @@ Motivated Web Developer with around 2 Years for experience of creating and maint
 - **SEO and Analytics Techniques** - (Advance)
 
 ## Projects
-- **NetChat - Real Time Conversation Application**;
+- **NetChat - Real Time Conversation Application** : 
 An end to end real time conversation app with features like user login & registration, real time messaging, friend
 requests, and many more. - NextJS, Tailwind CSS, Firebase, NodeJS.
-- **Evergoods - Complete & Modern E-Commerce Application**;
+- **Evergoods - Complete & Modern E-Commerce Application** : 
 An E-commerce application with features like cart, authentication, ordering, payment gateway, and a functional
 admin console. - NextJS, Tailwind CSS,MongoDB, NodeJS
-- **ChainSafe - Decentralised & Blockchain Based Credential Storing Application**;
+- **ChainSafe - Decentralised & Blockchain Based Credential Storing Application** : 
 A secure application built upon a polygon network to store private credentials. With Web 3 based authentication,
 multilayer encryption and all basic functions like add, delete, edit and search credentials. - NextJS, Tailwind CSS,
 Firebase, NodeJS
