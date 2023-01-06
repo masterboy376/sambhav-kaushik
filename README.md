@@ -21,16 +21,17 @@ Motivated Web Developer with around 2 Years for experience of creating and maint
 - **Data Structures and Algorithms (C/C++, Java, etc.)** - (Highly competent)
 - **SEO and Analytics Techniques** - (Advance)
 
-## Work Experience
-***Freelance Web Developer*** - **(2020-07 - current)** 
-*Self Employed, Dehradun, UT*
-
-I Have worked on various application development during this duration to accurately fulfil all the requirements required by the client. As a **full stack developer** my sole responsibilities are as follows:
-
-- Planning architecture, functionalities, and technologies for the application as per the client's requirements. 
-- Developing a modern, maintainable, scalable and resilient application using the best practices.
-- Testing the system properly before hosting or delivering the project.
-- Providing the maintenance service to the client as per the terms and requirements.
+## Projects
+-❖ **NetChat** - Real Time Conversation Application
+An end to end real time conversation app with features like user login & registration, real time messaging, friend
+requests, and many more. - NextJS, Tailwind CSS, Firebase, NodeJS.
+-❖ **Evergoods** - Complete & Modern E-Commerce Application
+An E-commerce application with features like cart, authentication, ordering, payment gateway, and a functional
+admin console. - NextJS, Tailwind CSS,MongoDB, NodeJS
+-❖ **ChainSafe** - Decentralised & Blockchain Based Credential Storing Application
+A secure application built upon a polygon network to store private credentials. With Web 3 based authentication,
+multilayer encryption and all basic functions like add, delete, edit and search credentials. - NextJS, Tailwind CSS,
+Firebase, NodeJS
 
 ## Education
 **High School Diploma: Science with Mathematics** - **(2021-04 - 2022-07)**
